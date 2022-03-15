@@ -16,17 +16,17 @@ module.exports = {
     module: {
         rules: [
             {
-                test:/\.jpg$/i,
+                test:/\.(png|jpe?g|gif)$/i,
                 use:[
                     {
                         loader:'file-loader',
                        options:{
                            esModule: false,
                            name(file){
-                               return "[path][name].[text]"
+                               return "[path][name].[ext]"
                            },
                            publicPath: function(url) {
-                               return url.replace('../','/assets')
+                               return url.replace('../', '/assets/')
                            }
                         }
                     },
