@@ -1,4 +1,4 @@
-const APP_PREFIX = "FoodEvent-";
+const APP_PREFIX = "FoodFest-";
 const VERSION = "version_01";
 const CACHE_NAME = APP_PREFIX + VERSION;
 const FILES_TO_CACHE = [
@@ -44,13 +44,13 @@ self.addEventListener("activate", function (e) {
     caches.keys().then((keyList) => {
       // `keyList` contains all cache names under your username.github.io
       // filter out ones that has this app prefix to create keeplist
-      let cacheKeepList = keyList.filter((key) => {
+      let cacheKeeplist = keyList.filter((key) => {
         return key.indexOf(APP_PREFIX);
       });
-      cacheKeepList.push(CACHE_NAME);
+      cacheKeeplist.push(CACHE_NAME);
       return Promise.all(
         keyList.map((key, i) => {
-          if (cacheKeepList.indexOf(key) === -1) {
+          if (cacheKeeplist.indexOf(key) === -1) {
             console.log("deleting cache:" + keyList[i]);
             return caches.delete(keyList[i]);
           }
